@@ -10,6 +10,11 @@
     padding-left: 20px;
     padding-right: 20px;
   }
+  // Ensure padding is not added to dialog iframe windows
+  body.dialog-iframe-popup {
+    padding-left: 0;
+    padding-right: 0;
+  }
   // Negative indent the now static "fixed" navbar
   .navbar-fixed-top,
   .navbar-fixed-bottom,
