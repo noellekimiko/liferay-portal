@@ -586,6 +586,36 @@ AUI.add(
 							if (focusManager) {
 								focusManager.refresh();
 							}
+
+							var listRoot = document.getElementsByClassName('lfr-menu-list')[0];
+
+							var listItems = listRoot.children;
+
+							var numListItems = listItems.length;
+
+							var className = "dropdown-menu lfr-menu-list direction-down";
+
+							var numHidden = 0;
+
+							for (i = 0; i < numListItems; ++i) {
+								var isHidden = listItems[i].getAttribute('hidden');
+								if (isHidden) {
+									++numHidden
+								}
+							}
+
+							if (numHidden >= numListItems) {
+								listRoot.setAttribute('hidden', 'true');
+								listRoot.setAttribute('style', 'display: none;');
+								listRoot.setAttribute('class', className + ' hide');
+							}
+
+							else {
+								listRoot.setAttribute('hidden', 'false');
+								listRoot.setAttribute('style', 'display: visible;');
+								listRoot.setAttribute('class', className);
+							}
+
 						}
 					);
 
