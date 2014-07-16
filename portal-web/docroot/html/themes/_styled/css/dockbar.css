@@ -543,6 +543,10 @@ $editLayoutPanelWidth: 460px;
 			@include respond-to(phone, tablet) {
 				height: auto;
 				position: relative;
+
+				.container-fluid > .nav > li.dropdown .dropdown-menu li.site-add-controls a .nav-item-icon {
+					padding-right: 4px;
+				}
 			}
 
 			.diamond {
