@@ -71,26 +71,29 @@
 							<aui:fieldset cssClass="col-md-6" label="portal">
 								<aui:input helpTextCssClass="help-inline" label="portal-name" name="companyName" suffix='<%= LanguageUtil.format(request, "for-example-x", "Liferay", false) %>' value="<%= PropsValues.COMPANY_DEFAULT_NAME %>" />
 
-								<aui:field-wrapper cssClass="input-append" label="default-language" name="companyLocale">
-									<aui:select inlineField="<%= true %>" label="" name="companyLocale">
+								<aui:field-wrapper label="default-language" name="companyLocale">
+									<div class="input-group">
+										<aui:select inlineField="<%= true %>" label="" name="companyLocale">
 
-										<%
-										String languageId = GetterUtil.getString((String)session.getAttribute(WebKeys.SETUP_WIZARD_DEFAULT_LOCALE), SetupWizardUtil.getDefaultLanguageId());
+											<%
+											String languageId = GetterUtil.getString((String)session.getAttribute(WebKeys.SETUP_WIZARD_DEFAULT_LOCALE), SetupWizardUtil.getDefaultLanguageId());
 
-										Locale[] locales = LanguageUtil.getAvailableLocales();
+											Locale[] locales = LanguageUtil.getAvailableLocales();
 
-										for (Locale curLocale : locales) {
-										%>
+											for (Locale curLocale : locales) {
+											%>
 
-											<aui:option label="<%= curLocale.getDisplayName(curLocale) %>" selected="<%= languageId.equals(LocaleUtil.toLanguageId(curLocale)) %>" value="<%= LocaleUtil.toLanguageId(curLocale) %>" />
+												<aui:option label="<%= curLocale.getDisplayName(curLocale) %>" selected="<%= languageId.equals(LocaleUtil.toLanguageId(curLocale)) %>" value="<%= LocaleUtil.toLanguageId(curLocale) %>" />
 
-										<%
-										}
-										%>
+											<%
+											}
+											%>
 
-									</aui:select>
-
-									<aui:button cssClass="change-language" name="changeLanguageButton" value="change" />
+										</aui:select>
+										<span class="input-group-btn">
+											<aui:button cssClass="change-language" name="changeLanguageButton" value="change" />
+										</span>
+									</div>
 								</aui:field-wrapper>
 
 								<aui:input name="addSampleData" type="checkbox" value="<%= true %>" />
