@@ -13,6 +13,14 @@ $FontAwesomePath: "aui/alloy-font-awesome/font" !default;
 	@import "aui/bootstrap";
 	@import "aui_custom";
 	@import "aui/responsive";
+
+	@media (max-width: 767px) {
+		body.dialog-iframe-popup {
+			padding-left: 0;
+			padding-right: 0;
+		}
+	}
+
 	@import "liferay_custom";
 
 	@import "aui/alloy-font-awesome/scss/core";
@@ -27,4 +35,6 @@ $FontAwesomePath: "aui/alloy-font-awesome/font" !default;
 	font-size: $baseFontSize;
 	line-height: $baseLineHeight;
 	margin: 0;
+
+
 }
