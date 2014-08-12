@@ -642,13 +642,12 @@ AUI.add(
 						instance._vocabularyPanelAdd = Liferay.Util.Window.getWindow(
 							{
 								dialog: {
+									destroyOnHide: true,
 									cssClass: CSS_ADMIN_DIALOG
 								},
 								title: Liferay.Language.get('add-vocabulary')
 							}
 						);
-
-						instance._vocabularyPanelAdd.hide();
 
 						instance._bindCloseEvent(instance._vocabularyPanelAdd);
 
@@ -2688,36 +2687,25 @@ AUI.add(
 					_showVocabularyPanelAdd: function() {
 						var instance = this;
 
-						var vocabularyPanelAdd = instance._vocabularyPanelAdd;
+						var vocabularyPanelAdd = instance._createVocabularyPanelAdd();
 
-						if (!vocabularyPanelAdd) {
-							vocabularyPanelAdd = instance._createVocabularyPanelAdd();
+						var vocabularyURL = instance._createURL(TYPE_VOCABULARY, ACTION_ADD, LIFECYCLE_RENDER);
 
-							var vocabularyURL = instance._createURL(TYPE_VOCABULARY, ACTION_ADD, LIFECYCLE_RENDER);
+						vocabularyPanelAdd.show();
 
-							vocabularyPanelAdd.show();
+						vocabularyPanelAdd._syncUIPosAlign();
 
-							vocabularyPanelAdd._syncUIPosAlign();
+						var afterSuccess = A.bind('_initializeVocabularyPanelAdd', instance, null);
 
-							var afterSuccess = A.bind('_initializeVocabularyPanelAdd', instance, null);
-
-							vocabularyPanelAdd.plug(
-								A.Plugin.IO,
-								{
-									uri: vocabularyURL.toString(),
-									after: {
-										success: afterSuccess
-									}
+						vocabularyPanelAdd.plug(
+							A.Plugin.IO,
+							{
+								uri: vocabularyURL.toString(),
+								after: {
+									success: afterSuccess
 								}
-							);
-						}
-						else {
-							vocabularyPanelAdd.show();
-
-							vocabularyPanelAdd._syncUIPosAlign();
-
-							instance._focusVocabularyPanelAdd();
-						}
+							}
+						);
 					},
 
 					_showVocabularyPanelEdit: function() {
