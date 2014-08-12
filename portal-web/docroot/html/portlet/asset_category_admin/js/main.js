@@ -588,13 +588,12 @@ AUI.add(
 						instance._categoryPanelAdd = Liferay.Util.Window.getWindow(
 							{
 								dialog: {
+									destroyOnHide: true,
 									cssClass: CSS_ADMIN_DIALOG
 								},
 								title: Liferay.Language.get('add-category')
 							}
 						);
-
-						instance._categoryPanelAdd.hide();
 
 						instance._bindCloseEvent(instance._categoryPanelAdd);
 
@@ -2558,7 +2557,15 @@ AUI.add(
 						else if (instance._currentCategoryPanelAddIOHandle) {
 							instance._currentCategoryPanelAddIOHandle.detach();
 
-							categoryPanelAdd.io.set(STR_URI, categoryURL.toString());
+							categoryPanelAdd = instance._createCategoryPanelAdd();
+
+							categoryPanelAdd.plug(
+								A.Plugin.IO,
+								{
+									autoLoad: false,
+									uri: categoryURL.toString()
+								}
+							);
 						}
 
 						categoryPanelAdd.show();
