@@ -588,8 +588,8 @@ AUI.add(
 						instance._categoryPanelAdd = Liferay.Util.Window.getWindow(
 							{
 								dialog: {
-									destroyOnHide: true,
-									cssClass: CSS_ADMIN_DIALOG
+									cssClass: CSS_ADMIN_DIALOG,
+									destroyOnHide: true
 								},
 								title: Liferay.Language.get('add-category')
 							}
@@ -642,8 +642,8 @@ AUI.add(
 						instance._vocabularyPanelAdd = Liferay.Util.Window.getWindow(
 							{
 								dialog: {
-									destroyOnHide: true,
-									cssClass: CSS_ADMIN_DIALOG
+									cssClass: CSS_ADMIN_DIALOG,
+									destroyOnHide: true
 								},
 								title: Liferay.Language.get('add-vocabulary')
 							}
