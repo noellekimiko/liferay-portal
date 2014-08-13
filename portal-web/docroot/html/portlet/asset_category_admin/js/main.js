@@ -2567,8 +2567,6 @@ AUI.add(
 							);
 						}
 
-						categoryPanelAdd.show();
-
 						categoryPanelAdd._syncUIPosAlign();
 
 						instance._currentCategoryPanelAddIOHandle = categoryPanelAdd.io.after(
@@ -2690,8 +2688,6 @@ AUI.add(
 						var vocabularyPanelAdd = instance._createVocabularyPanelAdd();
 
 						var vocabularyURL = instance._createURL(TYPE_VOCABULARY, ACTION_ADD, LIFECYCLE_RENDER);
-
-						vocabularyPanelAdd.show();
 
 						vocabularyPanelAdd._syncUIPosAlign();
 
