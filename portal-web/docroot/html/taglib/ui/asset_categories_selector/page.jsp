@@ -23,6 +23,7 @@ String className = (String)request.getAttribute("liferay-ui:asset-categories-sel
 long classPK = GetterUtil.getLong((String)request.getAttribute("liferay-ui:asset-categories-selector:classPK"));
 long classTypePK = GetterUtil.getLong((String)request.getAttribute("liferay-ui:asset-categories-selector:classTypePK"));
 String hiddenInput = (String)request.getAttribute("liferay-ui:asset-categories-selector:hiddenInput");
+boolean showRequiredLabel = GetterUtil.getBoolean((String)request.getAttribute("liferay-ui:asset-categories-selector:showRequiredLabel"), true);
 String curCategoryIds = GetterUtil.getString((String)request.getAttribute("liferay-ui:asset-categories-selector:curCategoryIds"), "");
 String curCategoryNames = StringPool.BLANK;
 int maxEntries = GetterUtil.getInteger(PropsUtil.get(PropsKeys.ASSET_CATEGORIES_SELECTOR_MAX_ENTRIES));
@@ -73,7 +74,7 @@ if (Validator.isNotNull(className)) {
 					(<%= vocabularyGroup.getDescriptiveName(locale) %>)
 				</c:if>
 
-				<c:if test="<%= vocabulary.isRequired(classNameId, classTypePK) %>">
+				<c:if test="<%= vocabulary.isRequired(classNameId, classTypePK) && showRequiredLabel %>">
 					<span class="label-required"><liferay-ui:message key="required" /></span>
 				</c:if>
 			</label>

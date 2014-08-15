@@ -58,6 +58,7 @@
 			classPK="<%= _getClassPK(bean, classPK) %>"
 			classTypePK="<%= classTypePK %>"
 			contentCallback='<%= portletResponse.getNamespace() + "getSuggestionsContent" %>'
+			showRequiredLabel="<%= showRequiredLabel %>"
 		/>
 	</c:when>
 	<c:when test='<%= (model != null) && type.equals("assetTags") %>'>
